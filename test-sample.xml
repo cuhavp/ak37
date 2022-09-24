@@ -1,0 +1,10 @@
+<suite name="Test Sample">
+    <test name="Chrome">
+        <parameter name="browser"  value="Chrome"/>
+        <parameter name="first-name"  value="Cedric"/>
+        <classes>
+            <class name="features.elements.TestSample"/>
+            <class name="features.elements.TestSample2"/>
+        </classes>
+    </test>
+</suite>

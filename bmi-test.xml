@@ -1,0 +1,12 @@
+<suite name="Body Mass Index Calculator">
+    <listeners>
+        <listener class-name="supports.SampleListener"/>
+    </listeners>
+    <parameter name="url" value="https://www.calculator.net/bmi-calculator.html"/>
+    <test name="Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="features.bmi.UnitCalculatorTest"/>
+        </classes>
+    </test>
+</suite>
