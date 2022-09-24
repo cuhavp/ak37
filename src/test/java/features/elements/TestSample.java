@@ -14,21 +14,13 @@ public class TestSample {
         System.out.println("Before Test");
     }
 
-    @Parameters({"browser"})
-    @BeforeClass
-    void beforeClass(String browser){
-        System.out.println("Before Class "+browser);
-        System.out.println("Open Browser");
-    }
-
-
     @BeforeMethod
     void beforeMethod(){
         System.out.println("Before Method");
     }
 
 
-    @Test(description = "",groups = {"smoke-test","regression"})
+    @Test
     public void tc01(){
         System.out.println("tc01");
     }
@@ -38,7 +30,7 @@ public class TestSample {
         System.out.println("tc02");
     }
 
-    @Test(description = "",groups = {"smoke-test"},dependsOnMethods = {"tc01"})
+    @Test
     public void tc03(){
         System.out.println("tc03");
     }
@@ -51,14 +43,6 @@ public class TestSample {
     @Test(description = "")
     public void tc05(){
         System.out.println("tc05");
-    }
-
-
-    @Parameters({ "first-name" })
-    @Test
-    public void testSingleString(String firstName) {
-        System.out.println("Invoked testString " + firstName);
-        assert "Cedric".equals(firstName);
     }
 
 
