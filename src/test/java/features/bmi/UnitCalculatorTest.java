@@ -19,7 +19,7 @@ public class UnitCalculatorTest {
     @Parameters({"browser","url"})
     @BeforeClass
      public void setUp(String browser,String url) {
-       Browser.openBrowser(browser);
+       Browser.openBrowser(browser,true);
         Browser.visit(url);
         unitCalculatorPage = new UnitCalculatorPage();
         unitCalculatorPage.selectMetricUnit();
