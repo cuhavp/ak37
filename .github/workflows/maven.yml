@@ -26,8 +26,11 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
-      - name: Test with Maven
-        run: mvn clean test -Dtest.suite=bmi-test.xml allure:report
+      - name: Test with BMI
+        run: mvn clean test -Dtest.suite=bmi-test.xml
+
+      - name: Test with SAMPLE
+        run: mvn test -Dtest.suite=test-sample.xml allure:report
 
       - name: Test Report
         uses: dorny/test-reporter@v1
