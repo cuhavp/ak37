@@ -1,8 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import supports.Browser;
 
 public class HomePage extends Browser {
@@ -13,7 +11,6 @@ public class HomePage extends Browser {
 
 
     public boolean isLoggedInSuccessMessageDisplayed() {
-        return driver
-                .findElement(flashMessagesDiv).findElement(successMessageLabel).isDisplayed();
+        return getElement(flashMessagesDiv).findElement(successMessageLabel).isDisplayed();
     }
 }
