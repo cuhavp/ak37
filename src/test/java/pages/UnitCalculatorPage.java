@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import supports.Browser;
 
 public class UnitCalculatorPage extends Browser {
@@ -17,26 +16,26 @@ public class UnitCalculatorPage extends Browser {
 
 
     public String getResult() {
-        return driver.findElement(resultLabel).getText();
+        return getText(resultLabel);
     }
 
     public void cleanUpForm(){
-        driver.findElement(clearButton).click();
+        click(clearButton);
     }
 
     public void fillForm(String age, String gender, String height, String weight) {
-        driver.findElement(ageTextBox).sendKeys(age);
+        fill(ageTextBox,age);
         if (gender.equalsIgnoreCase("male")) {
-            driver.findElement(maleCheckBox).click();
-        } else driver.findElement(femaleCheckBox).click();
+            click(maleCheckBox);
+        } else click(femaleCheckBox);
 
-        driver.findElement(heightTextBox).sendKeys(height);
-        driver.findElement(weightTextBox).sendKeys(weight);
+        fill(heightTextBox,height);
+        fill(weightTextBox,weight);
+        click(calculateButton);
 
-        driver.findElement(calculateButton).click();
     }
 
     public void selectMetricUnit() {
-        driver.findElement(metricUnitTab).click();
+        click(metricUnitTab);
     }
 }

@@ -1,8 +1,10 @@
 package supports;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,12 +14,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.CheckBoxPage;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
 public class Browser {
+    private static final Logger logger = LogManager.getLogger(Browser.class);
+
     protected static WebDriver driver;
     public static WebDriverWait wait;
 
@@ -43,6 +48,7 @@ public class Browser {
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(TIMEOUT));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TIMEOUT));
+        logger.info("Open browser "+name);
     }
 
     public static void openBrowser(String name, boolean setHeadless) {
@@ -71,6 +77,10 @@ public class Browser {
         driver.get(url);
     }
 
+    public static String getText(By locator){
+        logger.info("get text from" +locator);
+        return driver.findElement(locator).getText();
+    }
 
     public static void captureScreenShot(String name){
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -79,6 +89,18 @@ public class Browser {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void click(By locator){
+        driver.findElement(locator).click();
+    }
+
+    public static void fill(By locator,String withValue){
+        driver.findElement(locator).sendKeys(withValue);
+    }
+
+    public static String getCurrentUrl(){
+        return driver.getCurrentUrl();
     }
 
     public static void quit(){

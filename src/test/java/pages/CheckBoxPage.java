@@ -6,13 +6,11 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import supports.Browser;
 
-public class CheckBoxPage {
-    private WebDriver driver;
+public class CheckBoxPage extends Browser {
 
-    public CheckBoxPage(WebDriver driver) {
-        this.driver = driver;
-    }
+
     private static final Logger logger = LogManager.getLogger(CheckBoxPage.class);
 
 
@@ -34,6 +32,7 @@ public class CheckBoxPage {
 
 
     public void open(){
-        driver.get("https://the-internet.herokuapp.com/checkboxes");
+
+       visit("https://the-internet.herokuapp.com/checkboxes");
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.StatusCodePage;
+import supports.Browser;
 
 public class HyperLinkTest {
 
@@ -13,14 +14,12 @@ public class HyperLinkTest {
 
     @BeforeClass
     void setUp(){
-        WebDriverManager.chromedriver().setup();
-         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        Browser.openBrowser("chrome");
     }
 
     @BeforeMethod
     void openPage(){
-        statusCodePage = new StatusCodePage(driver);
+        statusCodePage = new StatusCodePage();
         statusCodePage.open();
     }
 
@@ -48,16 +47,16 @@ public class HyperLinkTest {
     @Test(dataProvider = "statusCode",description = "")
     void verifyStatusPage(String status){
         statusCodePage.clickOnLink(status);
-        Assert.assertEquals(driver.getCurrentUrl(),"https://the-internet.herokuapp.com/status_codes/"+status);
+        Assert.assertEquals(Browser.getCurrentUrl(),"https://the-internet.herokuapp.com/status_codes/"+status);
     }
 
     @AfterMethod
     void backToStatusPage(){
-        driver.navigate().back();
+        Browser.getDriver().navigate().back();
     }
 
     @AfterClass
     void close(){
-        driver.quit();
+        Browser.quit();
     }
 }
