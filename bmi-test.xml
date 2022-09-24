@@ -6,7 +6,7 @@
     <test name="Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="features.bmi.UnitCalculatorTest"/>
+            <class name="features.elements.TestSample"/>
         </classes>
     </test>
 </suite>
